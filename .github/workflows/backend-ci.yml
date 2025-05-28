@@ -5,8 +5,7 @@ on:
     paths:
       - 'backend/**'
       - 'libs/**'
-      - 'package.json'
-      - 'tsconfig.json'
+      - '.github/workflows/backend.yml'
   pull_request:
     paths:
       - 'backend/**'
@@ -15,6 +14,10 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: backend
 
     steps:
       - name: ⬇️ Checkout code
