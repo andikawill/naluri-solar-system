@@ -1,0 +1,44 @@
+name: Frontend CI
+
+on:
+  push:
+    paths:
+      - 'app/**'
+      - 'components/**'
+      - 'hooks/**'
+      - 'constants/**'
+      - 'assets/**'
+      - 'package.json'
+      - 'tsconfig.json'
+  pull_request:
+    paths:
+      - 'app/**'
+      - 'components/**'
+      - 'hooks/**'
+      - 'constants/**'
+      - 'assets/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: ⬇️ Checkout code
+        uses: actions/checkout@v3
+
+      - name: 🟢 Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: 📦 Install dependencies
+        run: npm ci
+
+      - name: 🔍 Run Linter
+        run: npm run lint
+
+      - name: 🛠️ Type check
+        run: npm run tsc --noEmit
+
+      - name: 🚧 Expo build (optional)
+        run: echo "Expo build skipped (CI only runs lint and typecheck)"

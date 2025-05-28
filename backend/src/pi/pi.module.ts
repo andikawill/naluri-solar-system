@@ -4,6 +4,6 @@ import { PiController } from './pi.controller';
 
 @Module({
   providers: [PiService],
-  controllers: [PiController]
+  controllers: [PiController],
 })
 export class PiModule {}
