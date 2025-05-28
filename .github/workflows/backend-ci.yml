@@ -4,12 +4,10 @@ on:
   push:
     paths:
       - 'backend/**'
-      - 'libs/**'
       - '.github/workflows/backend.yml'
   pull_request:
     paths:
       - 'backend/**'
-      - 'libs/**'
 
 jobs:
   build:
